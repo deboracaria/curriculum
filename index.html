@@ -1,0 +1,295 @@
+<!doctype html>
+<!--
+  Código base para site de portfólio
+  - Arquivo único: index.html (HTML + CSS + JS)
+  - Mobile-first, responsivo, acessível e fácil de personalizar
+  - Como usar: Salve como `index.html` e abra no navegador. Para publicar, envie para um repositório no GitHub e ative o GitHub Pages.
+
+  Autora do template: ChatGPT para Débora
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfólio • Débora Cária</title>
+  <meta name="description" content="Portfólio de design e projetos — Template base responsivo" />
+
+  <!-- Fonte (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ======= VARIÁVEIS E RESET ======= */
+    :root{
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #98a0b3;
+      --accent: #7c5cff;
+      --glass: rgba(255,255,255,0.03);
+      --radius: 12px;
+      --max-width: 1100px;
+      --gap: 1rem;
+      --shadow: 0 6px 18px rgba(2,6,23,0.6);
+      color-scheme: dark;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:'Inter',system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+      background:linear-gradient(180deg,var(--bg),#07101a 120%);
+      color:#e6eef8;line-height:1.45; -webkit-font-smoothing:antialiased;
+      padding:24px;display:flex;justify-content:center;
+    }
+
+    .wrap{width:100%;max-width:var(--max-width);}
+
+    /* ======= HEADER ======= */
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0 20px;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#4dd6ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:#031024}
+    .site-title{font-weight:700}
+    nav{display:none}
+
+    .cta{background:var(--accent);border:none;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:var(--shadow)}
+
+    /* ======= HERO ======= */
+    .hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;padding:18px 0}
+    .hero-inner{background:var(--glass);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+    .hero h1{margin:0;font-size:clamp(1.6rem,3.4vw,2.6rem)}
+    .hero p{margin:0;color:var(--muted)}
+
+    .grid{
+      display:grid;gap:var(--gap);
+    }
+
+    /* ======= PROJECTS ======= */
+    .projects{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .project-media{height:160px;border-radius:10px;background:linear-gradient(90deg,#051228 0%, #0a1722 100%);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .tag{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.02);color:var(--muted)}
+
+    /* ======= ABOUT & CONTACT ======= */
+    .cols{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}
+    .contact-form{display:flex;flex-direction:column;gap:8px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:inherit}
+    input::placeholder,textarea::placeholder{color:var(--muted)}
+    button[type="submit"]{background:transparent;border:1px solid rgba(124,92,255,0.85);padding:10px;border-radius:8px;color:var(--accent);font-weight:700;cursor:pointer}
+
+    /* ======= FOOTER ======= */
+    footer{margin-top:22px;color:var(--muted);font-size:14px;text-align:center;padding:14px 0}
+
+    /* ======= RESPONSIVO (MIN-width) ======= */
+    @media(min-width:720px){
+      nav{display:flex;gap:14px;align-items:center}
+      .hero{grid-template-columns:1fr 360px}
+      .projects{grid-template-columns:repeat(2,1fr)}
+      .cols{grid-template-columns:1fr 360px}
+    }
+
+    @media(min-width:1024px){
+      .projects{grid-template-columns:repeat(3,1fr)}
+    }
+
+    /* Small utilities */
+    .muted{color:var(--muted)}
+    .flex{display:flex;gap:8px;align-items:center}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">
+                <img src="image04.jpeg" alt="Perfil Debora Caria" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            </div>
+        <div>
+          <div class="site-title">Débora Cária</div>
+          <div class="muted" style="font-size:13px">Designer • UI/UX • Frontend • Graphic</div>
+        </div>
+      </div>
+
+      <nav aria-label="Navegação principal">
+        <a href="#projetos">Projetos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <div class="flex">
+       <!-- <button class="cta" id="themeToggle" aria-pressed="false">🌙</button>-->
+        <a class="cta" href="#contato">Trabalhe comigo</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+            <div>
+              <h1>Olá, sou Débora Cária</h1>
+              <p class="muted">Designer Criativa. Criando experiências simples, bonitas e eficientes.</p>
+            </div>
+            <div class="muted" style="font-size:13px">Belo Horizonte • Brasil</div>
+          </div>
+
+          <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+            <a class="tag" href="#projetos">UX</a>
+            <a class="tag" href="#projetos">UI</a>
+            <a class="tag" href="#projetos">Frontend</a>
+            <a class="tag" href="#contato">Freelance</a>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:10px">
+            <a class="cta" href="#projetos">Ver projetos</a>
+            <a style="padding:10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);text-decoration:none;color:var(--muted)" href="#sobre">Meu currículo</a>
+          </div>
+        </div>
+
+        <aside style="display:flex;flex-direction:column;gap:12px">
+          <div class="card">
+            <strong>Serviços</strong>
+            <div class="muted" style="font-size:13px;margin-top:8px">Criação de interfaces, protótipos, testes de usabilidade e front-end básico.</div>
+          </div>
+
+          <div class="card">
+            <strong>Contato rápido</strong>
+            <div class="muted" style="font-size:13px;margin-top:8px">cariadesign22@gmail.com<br/>(31) 99253-7545</div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="projetos" style="margin-top:20px">
+        <h2>Projetos recentes</h2>
+        <div class="projects">
+          <!-- Exemplo de projeto 1 -->
+          <article class="card">
+            <div class="project-media">
+                <img src="image03.png" alt="Preview do Payment App" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            </div>
+            <h3 style="margin-top:12px">UI Design for Payment App</h3>
+            <p class="muted">Design de produto, fluxo de finanças e protótipo de alta fidelidade.</p>
+            <div class="tags">
+              <span class="tag">Figma</span>
+              <span class="tag">Prototipação</span>
+              <span class="tag">UX/UI</span>
+            </div>
+          </article>
+
+          <!-- Exemplo de projeto 2 -->
+          <article class="card">
+            <div class="project-media">
+                <img src="image02.png" alt="Preview do UX/UI Travelfy" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            </div>
+            <h3 style="margin-top:12px">UX/UI Travelfy</h3>
+            <p class="muted">Web Design, site responsivo e código base de frontend.</p>
+            <div class="tags">
+              <span class="tag">UX/UI</span>
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">Web Design</span>
+            </div>
+          </article>
+
+          <!-- Exemplo de projeto 3 -->
+          <article class="card">
+            <div class="project-media">
+                <img src="image01.png" alt="Preview do App para Museu" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            </div>
+            <h3 style="margin-top:12px">App para Museu</h3>
+            <p class="muted">Design de produto, fluxo para usabilidade de aplicativo e protótipo.</p>
+            <div class="tags">
+              <span class="tag">UX/UI</span>
+              <span class="tag">Aplicativo</span>
+              <span class="tag">Alta Fidelidade</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="sobre" style="margin-top:22px">
+        <h2>Sobre mim</h2>
+        <div class="cols">
+          <div class="card">
+            <p>Olá! Sou Débora Cária, designer com base em artes visuais e experiência sólida em design gráfico, produção de peças físicas e comunicação criativa.
+Me formei em Design pela Universidade FUMEC em 2018 e desde então venho trilhando uma trajetória que mistura habilidades técnicas, visão estética e uma paixão por criar soluções que conectam forma e função. Fundei a Cária Design, minha marca de produtos de decoração, acessórios e brindes personalizados — um projeto que une minha veia empreendedora com o gosto por arte e design.
+Sou pós-graduada em Coolhunting, área focada na identificação e análise de sinais de mudança cultural, comportamental e estética. Como profissional, atuo com um olhar curioso, conectando movimentos sociais e culturais a insights que ajudam marcas e projetos a se posicionarem de forma relevante e inovadora no presente — com foco no que será considerado desejável no futuro.
+Nos últimos anos, tenho direcionado minha carreira para o universo do design de produtos digitais. Adquirindo certificados em UX/UI Design, com foco em usabilidade, arquitetura da informação e design centrado no usuário. Estou constantemente atualizando meus conhecimentos em ferramentas, metodologias e tendências da área, buscando entregar experiências digitais intuitivas, acessíveis e esteticamente agradáveis.
+Trago comigo uma bagagem prática em peças gráficas, redes sociais, vídeos, embalagens, marketing e relacionamento com clientes, com um olhar estratégico que une bem o físico e o digital.
+Tenho interesse especial em projetos nas áreas de arte, cultura e marcas criativas, buscando melhorar a rotina das pessoas por meio de soluções funcionais.</p>
+
+            <h4 style="margin-top:12px">Ferramentas</h4>
+            <div class="tags">
+              <span class="tag">Figma</span>
+              <span class="tag">Photoshop</span>
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">Metodologias Ágeis</span>
+            </div>
+          </div>
+
+          <aside class="card">
+            <strong>Dados</strong>
+            <div class="muted" style="margin-top:8px">Disponibilidade para freelance • Trabalho remoto • Orçamento sob consulta</div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="contato" style="margin-top:22px">
+        <h2>Contato</h2>
+        <div class="cols">
+          <form class="card contact-form" onsubmit="handleContact(event)">
+            <input type="text" name="name" placeholder="Seu nome" required />
+            <input type="email" name="email" placeholder="seu@email.com" required />
+            <textarea name="message" rows="5" placeholder="Me conte sobre o projeto" required></textarea>
+            <button type="submit">Enviar</button>
+            <div id="formMessage" class="muted" style="margin-top:8px;font-size:13px"></div>
+          </form>
+
+          <aside class="card">
+            <div>
+                <a class="cta" href="https://www.linkedin.com/in/cariadesign/" target="_blank">LinkedIn</a>
+                <a class="cta" href="https://www.instagram.com/bora.caria/" target="_blank">Instagram</a>
+                <a class="cta" href="https://api.whatsapp.com/send/?phone=5531992537545&text&type=phone_number&app_absent=0" target="_blank">WhatsApp</a>
+                <a class="cta" href="https://www.behance.net/cariadesign" target="_blank">Behance</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> Cária Design — Feito com cuidado e café.
+    </footer>
+  </div>
+
+  <script>
+    // Atualiza ano automático
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tema simples (claro x escuro) - opinionada: gosto que portfolios tenham modo escuro por padrão.
+    const toggle = document.getElementById('themeToggle');
+    toggle.addEventListener('click', ()=>{
+      const isDark = document.documentElement.style.getPropertyValue('--bg') === '' ? true : true; // placeholder
+      // implementação simples: inverte variáveis (para expandir, mover para CSS custom properties dinâmicas)
+      if(document.body.dataset.theme === 'light'){
+        document.body.dataset.theme = 'dark';
+        toggle.textContent = '🌙';
+      } else {
+        document.body.dataset.theme = 'light';
+        toggle.textContent = '☀️';
+      }
+    });
+
+    // Fake submit (substitua com integração real ao backend ou serviço de e-mail)
+    function handleContact(e){
+      e.preventDefault();
+      const msg = document.getElementById('formMessage');
+      msg.textContent = 'Mensagem enviada! Obrigado — eu responderei em até 48h.';
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
